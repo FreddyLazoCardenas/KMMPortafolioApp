@@ -44,32 +44,28 @@ jobs:
           cp -r composeApp/build/kotlin-webpack/wasmJs/productionExecutable/* _site/
           cp -r composeApp/build/processedResources/wasmJs/main/* _site/ 2>/dev/null || true
 
-      - name: Create index.html if it doesn't exist
+      - name: Create index.html
         run: |
-          if [ ! -f _site/index.html ]; then
-            cat > _site/index.html << 'EOL'
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Freddy's Portfolio</title>
-                <script type="application/javascript" src="skiko.js"></script>
-                <script type="application/javascript" src="composeApp.js"></script>
-            </head>
-            <body>
-                <canvas id="ComposeTarget"></canvas>
-            </body>
-            </html>
-            EOL
-          fi
+          echo '<!DOCTYPE html>
+          <html lang="en">
+          <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Freddy&apos;s Portfolio</title>
+          <script type="application/javascript" src="skiko.js"></script>
+          <script type="application/javascript" src="composeApp.js"></script>
+          </head>
+          <body>
+          <canvas id="ComposeTarget"></canvas>
+          </body>
+          </html>' > _site/index.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
 
-  deploy:
+deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
