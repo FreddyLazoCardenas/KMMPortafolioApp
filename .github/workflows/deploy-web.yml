@@ -41,7 +41,7 @@ jobs:
       - name: Prepare output directory
         run: |
           mkdir -p _site
-          cp -r composeApp/build/dist/wasmJs/productionExecutable/* _site/
+          cp -r composeApp/build/kotlin-webpack/wasmJs/productionExecutable/* _site/
           cp -r composeApp/build/processedResources/wasmJs/main/* _site/ 2>/dev/null || true
 
       - name: Create index.html if it doesn't exist
