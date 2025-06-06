@@ -1,7 +1,25 @@
 html, body {
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Use viewport height instead of percentage */
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
+
+/* Add styles for root container that Compose will use */
+#root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1;
+}
+
+/* Ensure all canvases created by Compose fill their containers */
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
