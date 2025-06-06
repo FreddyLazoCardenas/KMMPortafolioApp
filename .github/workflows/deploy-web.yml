@@ -56,7 +56,6 @@ jobs:
           <script type="application/javascript" src="composeApp.js"></script>
           </head>
           <body>
-          <canvas id="ComposeTarget"></canvas>
           </body>
           </html>' > _site/index.html
 
