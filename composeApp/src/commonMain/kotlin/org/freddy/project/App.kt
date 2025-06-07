@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -59,7 +60,7 @@ fun App() {
     ) {
         val visible = remember { mutableStateOf(true) }
 
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
@@ -67,58 +68,58 @@ fun App() {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             // Header Section
-
-            AnimatedVisibility(
-                visible = visible.value,
-                enter = fadeIn(tween(1000)) + slideInVertically(tween(1000)) { it / 2 }
-            ) {
-                HeaderSection()
+            item {
+                AnimatedVisibility(
+                    visible = visible.value,
+                    enter = fadeIn(tween(1000)) + slideInVertically(tween(1000)) { it / 2 }
+                ) {
+                    HeaderSection()
+                }
+                Spacer(modifier = Modifier.height(24.dp))
             }
-            Spacer(modifier = Modifier.height(24.dp))
-
 
             // About Section
-
-            AnimatedVisibility(
-                visible = visible.value,
-                enter = fadeIn(tween(1200)) + slideInVertically(tween(1200)) { it / 2 }
-            ) {
-                AboutSection()
+            item {
+                AnimatedVisibility(
+                    visible = visible.value,
+                    enter = fadeIn(tween(1200)) + slideInVertically(tween(1200)) { it / 2 }
+                ) {
+                    AboutSection()
+                }
+                Spacer(modifier = Modifier.height(24.dp))
             }
-            Spacer(modifier = Modifier.height(24.dp))
-
 
             // Skills Section
-
-            AnimatedVisibility(
-                visible = visible.value,
-                enter = fadeIn(tween(1400)) + slideInVertically(tween(1400)) { it / 2 }
-            ) {
-                SkillsSection()
+            item {
+                AnimatedVisibility(
+                    visible = visible.value,
+                    enter = fadeIn(tween(1400)) + slideInVertically(tween(1400)) { it / 2 }
+                ) {
+                    SkillsSection()
+                }
+                Spacer(modifier = Modifier.height(24.dp))
             }
-            Spacer(modifier = Modifier.height(24.dp))
-
 
             // Projects Section
-
-            AnimatedVisibility(
-                visible = visible.value,
-                enter = fadeIn(tween(1600)) + slideInVertically(tween(1600)) { it / 2 }
-            ) {
-                ProjectsSection()
+            item {
+                AnimatedVisibility(
+                    visible = visible.value,
+                    enter = fadeIn(tween(1600)) + slideInVertically(tween(1600)) { it / 2 }
+                ) {
+                    ProjectsSection()
+                }
+                Spacer(modifier = Modifier.height(24.dp))
             }
-            Spacer(modifier = Modifier.height(24.dp))
-
 
             // Contact Section
-
-            AnimatedVisibility(
-                visible = visible.value,
-                enter = fadeIn(tween(1800)) + slideInVertically(tween(1800)) { it / 2 }
-            ) {
-                ContactSection()
+            item {
+                AnimatedVisibility(
+                    visible = visible.value,
+                    enter = fadeIn(tween(1800)) + slideInVertically(tween(1800)) { it / 2 }
+                ) {
+                    ContactSection()
+                }
             }
-
         }
     }
 }
@@ -287,11 +288,7 @@ fun ProjectItem(title: String, description: String, technologies: List<String>) 
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surface.copy(
-                alpha = 0.5f
-            )
-        )
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
     ) {
         Column(
             modifier = Modifier.padding(12.dp)
