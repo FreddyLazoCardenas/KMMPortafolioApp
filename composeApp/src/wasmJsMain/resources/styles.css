@@ -1,12 +1,17 @@
 html, body {
     width: 100%;
-    height: 100%; /* Use percentage instead of viewport units */
-    min-height: 100vh; /* Use viewport height as minimum */
+    height: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto; /* Changed from hidden to allow scrolling if needed */
     display: flex;
     flex-direction: column;
+    position: absolute; /* Added absolute positioning */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* Add styles for root container that Compose will use */
@@ -14,8 +19,13 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
-    flex: 1;
-    min-height: 100vh; /* Ensure minimum height is the full viewport */
+    flex: 1 0 auto; /* Changed to prevent shrinking */
+    min-height: 100vh;
+    position: absolute; /* Added absolute positioning */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 /* Ensure all canvases created by Compose fill their containers */
@@ -23,10 +33,18 @@ canvas {
     display: block;
     width: 100%;
     height: 100%;
+    position: absolute; /* Added absolute positioning */
+    top: 0;
+    left: 0;
 }
 
 /* Force all parent containers to take full height */
 body > * {
-    flex: 1;
+    flex: 1 0 auto; /* Changed to prevent shrinking */
     min-height: 100%;
+    position: absolute; /* Added absolute positioning */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
