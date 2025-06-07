@@ -5,51 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PortafolioApp</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
-    <script type="application/javascript">
-        // Check if we're running on GitHub Pages
-        if (window.location.hostname.includes('github.io')) {
-            document.documentElement.classList.add('gh-pages-env');
-        }
-
-        // Initialize container after the page loads
-        window.addEventListener('load', function() {
-            // Create a root container if it doesn't exist
-            if (!document.getElementById('compose-root')) {
-                const root = document.createElement('div');
-                root.id = 'compose-root';
-                document.body.appendChild(root);
-            }
-
-            // Direct fix for GitHub Pages height issue
-            setTimeout(function() {
-                // Find all canvas elements created by Compose
-                const canvases = document.querySelectorAll('canvas');
-                canvases.forEach(function(canvas) {
-                    // Force full height on canvas
-                    canvas.style.height = '100vh';
-                    canvas.style.minHeight = '100vh';
-                    canvas.style.position = 'fixed';
-                    canvas.style.top = '0';
-                    canvas.style.left = '0';
-                    canvas.style.width = '100%';
-
-                    // Force parent elements to full height too
-                    let parent = canvas.parentElement;
-                    while (parent && parent !== document.body) {
-                        parent.style.height = '100vh';
-                        parent.style.minHeight = '100vh';
-                        parent.style.width = '100%';
-                        parent = parent.parentElement;
-                    }
-                });
-            }, 500); // Wait for Compose to render
-        });
-    </script>
     <script type="application/javascript" src="composeApp.js"></script>
 </head>
 <body>
-    <!-- Add an explicit container for Compose -->
-    <div id="compose-root"></div>
 </body>
 </html>
-
