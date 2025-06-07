@@ -10,10 +10,22 @@
         if (window.location.hostname.includes('github.io')) {
             document.documentElement.classList.add('gh-pages-env');
         }
+
+        // Initialize container after the page loads
+        window.addEventListener('load', function() {
+            // Create a root container if it doesn't exist
+            if (!document.getElementById('compose-root')) {
+                const root = document.createElement('div');
+                root.id = 'compose-root';
+                document.body.appendChild(root);
+            }
+        });
     </script>
     <script type="application/javascript" src="composeApp.js"></script>
 </head>
 <body>
+    <!-- Add an explicit container for Compose -->
+    <div id="compose-root"></div>
 </body>
 </html>
 
