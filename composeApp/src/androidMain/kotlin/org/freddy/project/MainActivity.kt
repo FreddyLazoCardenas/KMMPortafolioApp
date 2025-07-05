@@ -12,6 +12,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
+        // Initialize the application context for URL opening
+        setApplicationContext(this)
+
         setContent {
             App()
         }

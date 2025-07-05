@@ -50,12 +50,16 @@ import portafolioapp.composeapp.generated.resources.compose_multiplatform
 fun App() {
     MaterialTheme(
         colorScheme = darkColorScheme(
-            primary = Color(0xFF6200EE),
-            secondary = Color(0xFF03DAC6),
-            background = Color(0xFF121212),
-            surface = Color(0xFF252525),
-            onBackground = Color.White,
-            onSurface = Color.White
+            primary = Color(0xFF1E88E5), // UX recommended: Blue 600
+            secondary = Color(0xFF43A047), // UX recommended: Green 600
+            background = Color(0xFF121212), // UX recommended: true black for dark mode
+            surface = Color(0xFF1E1E1E), // UX recommended: slightly lighter than background
+            onPrimary = Color(0xFFFFFFFF), // White text on primary color
+            onSecondary = Color(0xFFFFFFFF), // White text on secondary color
+            onBackground = Color(0xFFFFFFFF), // White text on background
+            onSurface = Color(0xFFFFFFFF), // White text on surface
+            onTertiary = Color(0xFFFFFFFF), // White text on tertiary
+            onError = Color(0xFFFFFFFF) // White text on error
         )
     ) {
         val visible = remember { mutableStateOf(true) }
@@ -360,7 +364,9 @@ fun ContactSection() {
             Spacer(modifier = Modifier.height(12.dp))
 
             Button(
-                onClick = { },
+                onClick = {
+                    openUrl("https://www.linkedin.com/in/freddy-lazo-cardenas-tech/")
+                },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 shape = RoundedCornerShape(8.dp)
             ) {
@@ -373,9 +379,9 @@ fun ContactSection() {
                 text = "GitHub • LinkedIn • Twitter",
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+
             )
         }
     }
 }
-
