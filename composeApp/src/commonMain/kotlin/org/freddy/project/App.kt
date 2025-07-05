@@ -344,7 +344,7 @@ fun ProjectItem(title: String, description: String, technologies: List<String>) 
 @Composable
 fun ContactSection() {
     Card(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth().padding(bottom = 30.dp),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
