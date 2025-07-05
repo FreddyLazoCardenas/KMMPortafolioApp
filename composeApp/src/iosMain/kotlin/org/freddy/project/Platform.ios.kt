@@ -16,3 +16,10 @@ actual fun openUrl(url: String) {
         UIApplication.sharedApplication.openURL(nsUrl)
     }
 }
+
+actual fun makePhoneCall(phoneNumber: String) {
+    val phoneUrl = NSURL.URLWithString("tel:$phoneNumber")
+    if (phoneUrl != null) {
+        UIApplication.sharedApplication.openURL(phoneUrl)
+    }
+}

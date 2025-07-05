@@ -22,3 +22,9 @@ actual fun openUrl(url: String) {
     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
     applicationContext.startActivity(intent)
 }
+
+actual fun makePhoneCall(phoneNumber: String) {
+    val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+    applicationContext.startActivity(intent)
+}

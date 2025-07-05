@@ -6,6 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -22,10 +23,13 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SuggestionChip
 import androidx.compose.material3.SuggestionChipDefaults
@@ -292,7 +296,11 @@ fun ProjectItem(title: String, description: String, technologies: List<String>) 
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f))
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface.copy(
+                alpha = 0.5f
+            )
+        )
     ) {
         Column(
             modifier = Modifier.padding(12.dp)
@@ -342,7 +350,7 @@ fun ContactSection() {
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 // Replacing Icon with a simple Box as placeholder
@@ -365,22 +373,30 @@ fun ContactSection() {
 
             Button(
                 onClick = {
-                    openUrl("https://www.linkedin.com/in/freddy-lazo-cardenas-tech/")
+                    makePhoneCall("945305659") // Replace with your actual phone number
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary),
                 shape = RoundedCornerShape(8.dp)
             ) {
+                Icon(
+                    imageVector = Icons.Filled.Phone,
+                    contentDescription = "Phone",
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text("Contact Me")
             }
 
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "GitHub • LinkedIn • Twitter",
+                modifier = Modifier.clickable {
+                    openUrl("https://www.linkedin.com/in/freddy-lazo-cardenas-tech/")
+                },
+                text = "LinkedIn",
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.primary,
                 textAlign = TextAlign.Center,
-
             )
         }
     }
